@@ -82,7 +82,6 @@ public class App
                             + "WHERE emp_no = " + ID;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Return new employee if valid.
             // Check one is returned
             if (rset.next())
             {
@@ -103,6 +102,21 @@ public class App
         }
     }
 
+    public void displayEmployee(Employee emp)
+    {
+        if (emp != null)
+        {
+            System.out.println(
+                    emp.emp_no + " "
+                            + emp.first_name + " "
+                            + emp.last_name + "\n"
+                            + emp.title + "\n"
+                            + "Salary:" + emp.salary + "\n"
+                            + emp.dept_name + "\n"
+                            + "Manager: " + emp.manager + "\n");
+        }
+    }
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -113,6 +127,9 @@ public class App
 
         // Get Employee
         Employee emp = a.getEmployee(255530);
+
+        // Display results
+        a.displayEmployee(emp);
 
         // Disconnect from database
         a.disconnect();
